@@ -8,6 +8,5 @@ namespace ShopTARge24.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
-
     }
 }
