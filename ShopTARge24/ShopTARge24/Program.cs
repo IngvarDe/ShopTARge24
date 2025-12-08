@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.ApplicationServices.Services;
+using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Hubs;
@@ -24,15 +26,16 @@ builder.Services.AddHttpClient<ICocktailServices, CocktailServices>();
 builder.Services.AddDbContext<ShopTARge24Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+
+})
+    .AddEntityFrameworkStores<ShopTARge24Context>()
+    .AddDefaultTokenProviders()
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
+/*.AddDefaultUI()*/
+
+var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseRouting();
