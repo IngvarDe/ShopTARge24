@@ -28,12 +28,12 @@ builder.Services.AddDbContext<ShopTARge24Context>(options =>
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-
+    options.Password.RequiredLength = 3;
 })
     .AddEntityFrameworkStores<ShopTARge24Context>()
     .AddDefaultTokenProviders()
     .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
-/*.AddDefaultUI()*/
+//.AddDefaultUI()
 
 var app = builder.Build();
 
