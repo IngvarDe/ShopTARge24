@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
@@ -9,6 +10,8 @@ using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
+    //[Authorize(Roles = "Admin")]
+    [Authorize]
     public class SpaceshipsController : Controller
     {
         private readonly ShopTARge24Context _context;
@@ -27,7 +30,7 @@ namespace ShopTARge24.Controllers
             _fileServices = fileServices;
         }
 
-
+       
         public IActionResult Index()
         {
             var result = _context.Spaceships
@@ -42,6 +45,7 @@ namespace ShopTARge24.Controllers
 
             return View(result);
         }
+
 
         [HttpGet]
         public IActionResult Create()
@@ -85,6 +89,7 @@ namespace ShopTARge24.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
         {
@@ -117,6 +122,7 @@ namespace ShopTARge24.Controllers
 
             return View("CreateUpdate", vm);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Update(SpaceshipCreateUpdateViewModel vm)
@@ -151,6 +157,7 @@ namespace ShopTARge24.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -184,6 +191,7 @@ namespace ShopTARge24.Controllers
             return View(vm);
         }
 
+
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmation(Guid id)
         {
@@ -197,6 +205,7 @@ namespace ShopTARge24.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
@@ -233,6 +242,8 @@ namespace ShopTARge24.Controllers
             return View(vm);
         }
 
+
+        [HttpPost]
         public async Task<IActionResult> RemoveImage(ImageViewModel vm)
         {
             //tuleb ühendada dto ja vm
