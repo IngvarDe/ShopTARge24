@@ -138,5 +138,12 @@ namespace ShopTARge24.Controllers
             ViewBag.ErrorMessage = $"The users email, with userid of {userId}, cannot be confirmed.";
             return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(string? returnUrl)
+        {
+            return View();
+        }
     }
 }
