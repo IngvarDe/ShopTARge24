@@ -11,7 +11,6 @@ using ShopTARge24.Models.Spaceships;
 namespace ShopTARge24.Controllers
 {
     //[Authorize(Roles = "Admin")]
-    [Authorize]
     public class SpaceshipsController : Controller
     {
         private readonly ShopTARge24Context _context;

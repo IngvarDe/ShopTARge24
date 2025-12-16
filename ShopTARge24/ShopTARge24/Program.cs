@@ -37,6 +37,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 var app = builder.Build();
 
+app.MapControllers().RequireAuthorization();
 app.UseHttpsRedirection();
 app.UseRouting();
 
