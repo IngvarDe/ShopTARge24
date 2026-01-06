@@ -62,10 +62,6 @@ namespace ShopTARge24.ApplicationServices.Services
             dto.Token = token;
             var email = new MimeMessage();
 
-            _config.GetSection("EmailUserName").Value = "";
-            _config.GetSection("EmailHost").Value = "smtp.gmail.com";
-            _config.GetSection("EmailPassword").Value = "";
-
             email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUserName").Value));
             email.To.Add(MailboxAddress.Parse(dto.To));
             email.Subject = dto.Subject;
