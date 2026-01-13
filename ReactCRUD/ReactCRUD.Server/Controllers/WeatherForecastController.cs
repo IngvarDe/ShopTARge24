@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ReactCRUD.Server.ViewModels;
 
 namespace ReactCRUD.Server.Controllers
 {
