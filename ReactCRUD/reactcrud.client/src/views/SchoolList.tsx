@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 //import type { JSX } from "react/jsx-dev-runtime";
+//import axios from "axios";
 
 interface School {
     id: string;
@@ -11,15 +12,24 @@ interface School {
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
 
-    //const fetchSchools = useCallback(async () => {
-    //    const response = await fetch("/api/schools");
-    //    const data = await response.json();
-    //    setSchools(data);
-    //}, []);
+    const fetchSchools = useCallback(async () => {
+        try {
+            const response = await fetch("/api/school");
+            if (response.ok) {
+                const data = await response.json();
+                setSchools(data);
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+        }
+    }, []);
 
     useEffect(() => {
-        populateSchoolData();
-    }, []);
+
+        (async () => {
+            await fetchSchools();
+        })();
+    }, [fetchSchools]);
 
     return (
         <table>

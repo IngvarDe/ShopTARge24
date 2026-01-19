@@ -6,7 +6,7 @@ namespace ReactCRUD.Server.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SchoolController : ControllerBase
     {
         private readonly ReactCRUDContext _context;
