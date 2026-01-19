@@ -11,26 +11,27 @@ interface School {
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
 
-    const fetchSchools = useCallback(async () => {
-        const response = await fetch("/api/schools");
-        const data = await response.json();
-        setSchools(data);
-    }, []);
+    //const fetchSchools = useCallback(async () => {
+    //    const response = await fetch("/api/schools");
+    //    const data = await response.json();
+    //    setSchools(data);
+    //}, []);
 
     useEffect(() => {
         populateSchoolData();
-    }, [fetchSchools]);
+    }, []);
 
-    <table>
-        <div>
-            <h1>School List</h1>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Student Count</th>
-                </tr>
+    return (
+        <table>
+            <div>
+                <h1>School List</h1>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Student Count</th>
+                    </tr>
             </thead>
             <tbody>
                 {schools.map((school) => (
@@ -43,11 +44,11 @@ function SchoolList() {
                 ))}
             </tbody>
         </div>
-    </table>;
+    </table>);
 
 
     async function populateSchoolData() {
-        const response = await fetch("schoolsListViewModel");
+        const response = await fetch("schoolList");
         if (response.ok) {
             const data = await response.json();
             setSchools(data);
