@@ -1,12 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { School } from "../types/school";
 
-//interface School {
-//    id: string;
-//    name: string;
-//    address: string;
-//    studentCount: number;
-//}
 
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
@@ -54,15 +48,6 @@ function SchoolList() {
             </tbody>
         </div>
     </table>);
-
-
-    //async function populateSchoolData() {
-    //    const response = await fetch("schoolList");
-    //    if (response.ok) {
-    //        const data = await response.json();
-    //        setSchools(data);
-    //    }
-    //}
 }
 
 export default SchoolList;
