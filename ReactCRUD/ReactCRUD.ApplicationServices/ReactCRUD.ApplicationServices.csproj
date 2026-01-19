@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ReactCRUD.Core\ReactCRUD.Core.csproj" />
+    <ProjectReference Include="..\ReactCRUD.Data\ReactCRUD.Data.csproj" />
+  </ItemGroup>
+
 </Project>
