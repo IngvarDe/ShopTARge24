@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-//import type { JSX } from "react/jsx-dev-runtime";
-//import axios from "axios";
+import type { School } from "../types/school";
 
-interface School {
-    id: string;
-    name: string;
-    address: string;
-    studentCount: number;
-}
+//interface School {
+//    id: string;
+//    name: string;
+//    address: string;
+//    studentCount: number;
+//}
 
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
@@ -57,13 +56,13 @@ function SchoolList() {
     </table>);
 
 
-    async function populateSchoolData() {
-        const response = await fetch("schoolList");
-        if (response.ok) {
-            const data = await response.json();
-            setSchools(data);
-        }
-    }
+    //async function populateSchoolData() {
+    //    const response = await fetch("schoolList");
+    //    if (response.ok) {
+    //        const data = await response.json();
+    //        setSchools(data);
+    //    }
+    //}
 }
 
 export default SchoolList;
