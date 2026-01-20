@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReactCRUD.ApplicationServices\ReactCRUD.ApplicationServices.csproj" />
     <ProjectReference Include="..\reactcrud.client\reactcrud.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

@@ -24,8 +24,8 @@ namespace ReactCRUD.Server.Controllers
         }
 
 
-        [HttpGet(Name = "SchoolList")]
-        public IActionResult Index()
+        //[HttpGet(Name = "SchoolList")]
+        public IActionResult GetSchools()
         {
             var result = _context.Schools
                 .Select(x => new SchoolListViewModel
@@ -40,6 +40,7 @@ namespace ReactCRUD.Server.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> Details(Guid id)
         {
             var school = await _schoolInterface.SchoolDetail(id);
@@ -54,8 +55,8 @@ namespace ReactCRUD.Server.Controllers
                 Address = school.Address,
                 StudentCount = school.StudentCount,
             };
+
             return Ok(result);
         }
-
     }
 }
